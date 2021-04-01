@@ -129,8 +129,7 @@ public class PhoneListener extends PhoneStateListener {
     public void doBindService() {
         Log.d(TAG,"ServiceConnection doBindService");
         Intent intent = new Intent(context, CallService.class);
-        // Create a new Messenger for the communication back
-        // From the Service to the Activity
+        intent.setAction("DirectBind");
 
         context.bindService(intent, myConnection, Context.BIND_AUTO_CREATE);
     }

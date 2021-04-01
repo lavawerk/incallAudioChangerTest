@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         editTextPhoneNumber = findViewById(R.id.editTextPhoneNumber);
         buttonTurnSpeakerphoneOn = findViewById(R.id.buttonTurnSpeakerphoneOn);
         infoButton = findViewById(R.id.mode_info_button);
-        callservice = new CallService();
 
         phoneListener = new PhoneListener(this);
         audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
@@ -114,8 +113,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             buttonTurnSpeakerphoneOn.setBackgroundColor(Color.RED);
         }
-        if (infoButton != null) infoButton.setText("current state:" + callservice.getCallAudioState());
-        else Log.e(TAG, "infoText is null");
     }
 
     @Override

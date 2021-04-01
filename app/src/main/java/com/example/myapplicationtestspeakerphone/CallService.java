@@ -18,6 +18,9 @@ public class CallService extends InCallService {
         sInstance = this;
         Log.d(TAG, "onCreate");
     }
+
+
+
     public static CallService getInstance(){
         if (sInstance == null) Log.e(TAG, "sInstance is null!");
         return sInstance;
@@ -26,10 +29,13 @@ public class CallService extends InCallService {
     private final IBinder mBinder = new MyBinder();
 
     @Override
-    public IBinder onBind(Intent arg0) {
-        Bundle extras = arg0.getExtras();
+    public IBinder onBind(Intent intent) {
+        if (intent.getAction().equals("DirectBind")) {
+            Log.d(TAG,"DirectBind");
+            return mBinder;
+        }
         Log.d(TAG,"onBind");
-        return mBinder;
+        return super.onBind(intent);
     }
 
     public class MyBinder extends Binder {
