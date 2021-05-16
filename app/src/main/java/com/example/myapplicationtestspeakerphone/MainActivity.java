@@ -10,10 +10,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.AudioManager;
+
 import android.net.Uri;
 import android.os.Bundle;
-import android.telecom.CallAudioState;
-import android.telecom.InCallService;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextPhoneNumber;
     private Button infoButton;
     private static final String TAG = MainActivity.class.getName();
-    private CallService callservice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 0);
+        }
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
         }
 
         updateUi();
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
     public void setSpeakerphoneOn() {
         Log.i(TAG, "isSpeakerphoneOn() before setSpeakerphoneOn(true)  = " + audioManager.isSpeakerphoneOn());
         audioManager.setSpeakerphoneOn(true);
+
         Log.i(TAG, "isSpeakerphoneOn() after setSpeakerphoneOn(true)  = " + audioManager.isSpeakerphoneOn());
         updateUi();
     }
