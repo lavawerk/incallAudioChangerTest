@@ -42,6 +42,7 @@ public class PhoneListener extends PhoneStateListener {
             } catch (InterruptedException e) {
                 Log.e(TAG,e.getMessage());
             }
+            Log.i(TAG, "isSpeakerphoneOn() before setSpeakerphoneOn(true)  = " + audioManager.isSpeakerphoneOn());
             audioManager.setSpeakerphoneOn(true);
             Log.i(TAG, "isSpeakerphoneOn() after setSpeakerphoneOn(true)  = " + audioManager.isSpeakerphoneOn());
             setVolumeToMax();

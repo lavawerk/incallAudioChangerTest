@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void call() {
 
-        setSpeakerphoneOn();
+        //setSpeakerphoneOn();
         try {
             sleep(10);
         } catch (InterruptedException e) {
